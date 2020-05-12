@@ -1,0 +1,71 @@
+<% content_for :breadcrumb do %>
+  <!--------------------
+  START - Breadcrumbs
+  -------------------->
+  <ul class="breadcrumb">
+    <li class="breadcrumb-item">
+      <span>Home/user</span>
+    </li>
+  </ul>
+  <!--------------------
+  END - Breadcrumbs
+  -------------------->
+<% end %>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="element-wrapper">
+      <p id="notice"><%= notice %></p>
+
+      <h6 class="element-header">
+        Users
+      </h6>
+
+      <div class="element-box">
+        <h3 class="text-right">
+          <div class="btn btn-light btn-outline-dark">
+            <%= link_to 'New User', new_user_path %>
+          </div>
+        </h3>
+
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Mobile</th>
+              <th>Country</th>
+              <th>State</th>
+              <th>City</th>
+              <th>Gender</th>
+              <th>Email</th>
+              <th>Role</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @users.each do |user| %>
+            <tr>
+              <td><%= user.name %></td>
+              <td><%= user.mobile %></td>
+              <td><%= user.country %></td>
+              <td><%= user.state %></td>
+              <td><%= user.city %></td>
+              <td><%= user.gender %></td>
+              <td><%= user.email %></td>
+              <td><%= user.role %></td>
+              <td><%= link_to 'Show', user, class:"btn btn-outline-dark" %></td>
+              <td><%= link_to 'Edit', edit_user_path(user), class:"btn btn-outline-dark" %></td>
+              <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-outline-dark" %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+        <br>
+
+        <%= paginate @users %>
+        <%= page_entries_info @users %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,109 @@
+<% content_for :breadcrumb do %>
+  <!--------------------
+  START - Breadcrumbs
+  -------------------->
+  <ul class="breadcrumb">
+    <li class="breadcrumb-item">
+      <span>Home/project/show</span>
+    </li>
+  </ul>
+  <!--------------------
+  END - Breadcrumbs
+  -------------------->
+<% end %>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="element-wrapper">
+      <h6 class="element-header">
+        <p id="notice"><%= notice %></p>
+        My Projects
+      </h6>
+      <div class="element-box">
+        <h1><b><%= @project.title %> Detail</b></h1>
+
+        <h3 class="text-center">
+          <div class="btn btn-light btn-outline-dark">
+            <%= link_to 'Edit', edit_project_path(@project) %>
+          </div>
+          |
+          <div class="btn btn-light btn-outline-dark">
+            <%= link_to 'Back', projects_path(@project) %>
+          </div>
+          |
+          <div class="btn btn-light btn-outline-dark">
+            <%= link_to 'New Task ', new_project_task_path(@project.id) %>
+          </div>
+        </h3>
+
+        <p>
+          <strong>Title:</strong>
+          <%= @project.title %>
+        </p>
+
+        <p>
+          <strong>Description:</strong>
+          <%= @project.description %>
+        </p>
+
+        <p>
+          <strong>Manager:</strong>
+          <%= @project.manager_id %>
+        </p>
+
+        <p>
+          <strong>Website:</strong>
+          <%= @project.website %>
+        </p>
+
+        <p>
+          <strong>Start date:</strong>
+          <%= @project.start_date %>
+        </p>
+
+        <p>
+          <strong>End date:</strong>
+          <%= @project.end_date %>
+        </p>
+
+        <p>
+          <strong>Active:</strong>
+          <%= @project.active %>
+        </p>
+
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Status</th>
+              <th>User</th>
+              <th>Start date</th>
+              <th>End date</th>
+              <th>Spend time</th>
+              <th>Estimated time</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @project.tasks.each do |task| %>
+            <tr>
+              <td><%= task.title %></td>
+              <td><%= task.description %></td>
+              <td><%= task.status %></td>
+              <td><%= link_to task.user.name, task.user %></td>
+              <td><%= task.start_date.strftime("%m/%d/%Y %H:%M") %></td>
+              <td><%= task.end_date.strftime("%m/%d/%Y %H:%M") %></td>
+              <td><%= task.spend_time %></td>
+              <td><%= task.estimated_time %></td>
+              <td><%= link_to 'Show', project_task_path(@project, task), class:"btn btn-outline-dark" %></td>
+              <td><%= link_to 'Edit', edit_project_task_path(@project, task), class:"btn btn-outline-dark" %></td>
+              <td><%= link_to 'Destroy', url_for([@project, task]), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-outline-dark" %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

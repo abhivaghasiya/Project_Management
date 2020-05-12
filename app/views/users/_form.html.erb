@@ -1,0 +1,67 @@
+<%= form_with(model: user, local: true) do |form| %>
+
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: "form-control", placeholder: "Name" %>
+    <% if user.errors.any? %>
+      <p>
+        <%= user.errors.messages[:name].join(', ') %>
+      </p>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= form.label :mobile %>
+    <%= form.text_field :mobile, class: "form-control", placeholder: "Mobile" %>
+    <% if user.errors.any? %>
+      <p>
+        <%= user.errors.messages[:mobile].join(', ') %>
+      </p>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= form.label :country %>
+    <%= form.text_field :country, class: "form-control", placeholder: "Country" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :state %>
+    <%= form.text_field :state, class: "form-control", placeholder: "State" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :city %>
+    <%= form.text_field :city, class: "form-control", placeholder: "City" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :gender %>
+    <%= form.text_field :gender, class: "form-control", placeholder: "Gender" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email, class: "form-control", placeholder: "E-mail" %>
+    <% if user.errors.any? %>
+      <p>
+        <%= user.errors.messages[:email].join(', ') %>
+      </p>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= form.label :role %>
+    <%= form.text_field :role, class: "form-control", placeholder: "Role" %>
+    <% if user.errors.any? %>
+      <p>
+        <%= user.errors.messages[:role].join(', ') %>
+      </p>
+    <% end %>
+  </div>
+
+  <div class="actions text-center" style="padding-top: 12px">
+    <%= form.submit class:"btn btn-light btn-outline-dark"%>
+  </div>
+<% end %>

@@ -1,0 +1,65 @@
+<% content_for :breadcrumb do %>
+  <!--------------------
+  START - Breadcrumbs
+  -------------------->
+  <ul class="breadcrumb">
+    <li class="breadcrumb-item">
+      <span>Dashbord</span>
+    </li>
+  </ul>
+  <!--------------------
+  END - Breadcrumbs
+  -------------------->
+<% end %>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="element-wrapper">
+      <h6 class="element-header">
+       Projects
+      </h6>
+      <div class="element-box">
+        <div class="element-header">
+          Introduction
+        </div>
+          Introduction
+      </div>
+      <div class="element-box">
+        <div class="element-header">
+          Projects Current running
+        </div>
+          Projects Current running
+          <br>
+          <br>
+          <div class="btn btn-light btn-outline-dark">
+            <%= link_to 'Show', @project %>
+          </div>
+      </div>
+      <div class="element-box">
+        <div class="element-header">
+          Task
+        </div>
+          <div class="element-header">
+            Today task
+          </div>
+          Today task
+
+          <div class="element-header">
+            total task
+
+          </div>
+          total task
+
+          <div class="element-header">
+            task analysis [my tasks]
+          </div>
+          task analysis [my tasks]
+
+          <div class="element-header">
+            Current project task weekly analysis (Progress bar)
+          </div>
+          Current project task weekly analysis (Progress bar)
+
+      </div>
+    </div>
+  </div>
+</div>

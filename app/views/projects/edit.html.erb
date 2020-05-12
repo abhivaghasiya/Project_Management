@@ -1,0 +1,35 @@
+<% content_for :breadcrumb do %>
+  <!--------------------
+  START - Breadcrumbs
+  -------------------->
+  <ul class="breadcrumb">
+    <li class="breadcrumb-item">
+      <span>Home/projects/edit</span>
+    </li>
+  </ul>
+  <!--------------------
+  END - Breadcrumbs
+  -------------------->
+<% end %>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="element-wrapper">
+      <h6 class="element-header">
+        Editing Project
+      </h6>
+      <div class="element-box">
+        <%= render 'form', project: @project %>
+        <br>
+        <div class="text-center">
+          <div class="btn btn-light btn-outline-dark">
+            <%= link_to 'Show', @project %>
+          </div>
+          |
+          <div class="btn btn-light btn-outline-dark">
+            <%= link_to 'Back', projects_path %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

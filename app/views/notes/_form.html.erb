@@ -1,0 +1,44 @@
+<%= form_with(model: note, local: true) do |form| %>
+  <% if note.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(note.errors.count, "error") %> prohibited this note from being saved:</h2>
+
+      <ul>
+        <% note.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :task_id %>
+    <%# <%= form.text_field :task_id, class: "form-control", placeholder: "Task_id"%>
+    <%= form.select(:task_id, options_for_select(Task.pluck(:title, :id)), {prompt: 'Select'}, class: "form-control") %>
+    <% if note.errors.any? %>
+      <p>
+        <%= note.errors.messages[:task_id].join(', ') %>
+      </p>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= form.label :body %>
+    <%= form.text_area :body, class: "form-control", placeholder: "Body"%>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%# <%= form.text_field :user_id, class: "form-control", placeholder: "User_id"  %>
+    <%= select_tag(:user_id, options_for_select(User.pluck(:name, :id)), prompt: 'Select',class: "form-control") %>
+    <% if note.errors.any? %>
+      <p>
+        <%= note.errors.messages[:user_id].join(', ') %>
+      </p>
+    <% end %>
+  </div>
+
+  <div class="actions text-center" style="padding-top: 12px">
+    <%= form.submit class:"btn btn-light btn-outline-dark"%>
+  </div>
+<% end %>

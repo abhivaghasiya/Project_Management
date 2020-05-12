@@ -1,0 +1,75 @@
+<% content_for :breadcrumb do %>
+  <!--------------------
+  START - Breadcrumbs
+  -------------------->
+  <ul class="breadcrumb">
+    <li class="breadcrumb-item">
+      <span>Home/user/show</span>
+    </li>
+  </ul>
+  <!--------------------
+  END - Breadcrumbs
+  -------------------->
+<% end %>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="element-wrapper">
+      <h6 class="element-header">
+        User Show
+        <p id="notice"><%= notice %></p>
+      </h6>
+
+      <div class="element-box">
+        <div class="text-center">
+          <div class="btn btn-light btn-outline-dark">
+            <%= link_to 'Edit', edit_user_path(@user) %>
+          </div>
+          |
+          <div class="btn btn-light btn-outline-dark">
+            <%= link_to 'Back', users_path %>
+          </div>
+        </div>
+
+        <p>
+          <strong>Name:</strong>
+          <%= @user.name %>
+        </p>
+
+        <p>
+          <strong>Mobile:</strong>
+          <%= @user.mobile %>
+        </p>
+
+        <p>
+          <strong>Country:</strong>
+          <%= @user.country %>
+        </p>
+
+        <p>
+          <strong>State:</strong>
+          <%= @user.state %>
+        </p>
+
+        <p>
+          <strong>City:</strong>
+          <%= @user.city %>
+        </p>
+
+        <p>
+          <strong>Gender:</strong>
+          <%= @user.gender %>
+        </p>
+
+        <p>
+          <strong>Email:</strong>
+          <%= @user.email %>
+        </p>
+
+        <p>
+          <strong>Role:</strong>
+          <%= @user.role %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

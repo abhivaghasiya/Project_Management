@@ -1,0 +1,70 @@
+<% content_for :breadcrumb do %>
+  <!--------------------
+  START - Breadcrumbs
+  -------------------->
+  <ul class="breadcrumb">
+    <li class="breadcrumb-item">
+      <span>Home/project</span>
+    </li>
+  </ul>
+  <!--------------------
+  END - Breadcrumbs
+  -------------------->
+<% end %>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="element-wrapper">
+      <p id="notice"><%= notice %></p>
+      <h6 class="element-header">
+        <b>Projects</b>
+      </h6>
+      <h3 class="text-right">
+        <div class="btn btn-light btn-outline-dark">
+          <%= link_to 'New Project', new_project_path %>
+        </div>
+      </h3>
+      <div class="element-box">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Manager</th>
+              <th>Website</th>
+              <th>Start date</th>
+              <th>End date</th>
+              <th>Active</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @projects.each do |project| %>
+            <tr>
+              <td><%= project.title %></td>
+              <td><%= project.description %></td>
+              <td><%= link_to project.manager.name, project.manager %></td>
+              <td><%= link_to project.website, "http://www.google.de/search?q=#{project.website}", target: "_blank"%></td>
+              <td><%= project.start_date.strftime("%m/%d/%Y %H:%M") %></td>
+              <td><%= project.end_date.strftime("%m/%d/%Y %H:%M") %></td>
+              <td><%= project.active ? 'yes' : 'no' %></td>
+              <td><%= link_to 'Show', project, class:"btn btn-outline-dark" %></td>
+              <td><%= link_to 'Edit', edit_project_path(project), class:"btn btn-outline-dark" %></td>
+              <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-outline-dark" %></td>
+              <td><% if project.active %>
+                <%= link_to "Deactive", deactive_project_path(project), method: :put, class: "btn btn-outline-dark", data: { confirm: 'Are you sure?' } %>
+                <% else %>
+                <%= link_to "Active", active_project_path(project), method: :put, class: "btn btn-outline-dark", data: { confirm: 'Are you sure?' } %>
+                <% end %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <br>
+        <%= paginate @projects %>
+        <%= page_entries_info @projects %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,48 @@
+<% content_for :breadcrumb do %>
+  <!--------------------
+  START - Breadcrumbs
+  -------------------->
+  <ul class="breadcrumb">
+    <li class="breadcrumb-item">
+      <span>Home/Notes/show</span>
+    </li>
+  </ul>
+  <!--------------------
+  END - Breadcrumbs
+  -------------------->
+<% end %>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="element-wrapper">
+      <h6 class="element-header">
+        <p id="notice"><%= notice %></p>
+        My Notes
+      </h6>
+      <div class="element-box">
+        <div class="text-center">
+          <div class="btn btn-light btn-outline-dark">
+            <%= link_to 'Edit', edit_note_path(@note) %>
+          </div>
+           |
+          <div class="btn btn-light btn-outline-dark">
+            <%= link_to 'Back', notes_path %>
+          </div>
+        </div>
+        <p>
+          <strong>Task:</strong>
+          <%= @note.task_id %>
+        </p>
+
+        <p>
+          <strong>Body:</strong>
+          <%= @note.body %>
+        </p>
+
+        <p>
+          <strong>User:</strong>
+          <%= @note.user_id %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+<%= form_with(model: project, local: true) do |form| %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: "form-control", placeholder: "Title"  %>
+    <% if project.errors.any? %>
+      <p>
+        <%= project.errors.messages[:title].join(', ') %>
+      </p>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, class: "form-control", placeholder: "Description" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :manager_id %>
+    <%# <%= form.number_field :manager_id, class: "form-control", placeholder: "Manager_id" %>
+    <%= form.select(:manager_id, User.pluck(:name, :id), { prompt: 'Select'},class: "form-control") %>
+  </div>
+
+  <div class="field">
+    <%= form.label :website %>
+    <%= form.text_field :website, class: "form-control", placeholder: "Website" %>
+    <% if project.errors.any? %>
+      <p>
+        <%= project.errors.messages[:website].join(', ') %>
+      </p>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= form.label :start_date %>
+    <%= form.date_field :start_date, class: "form-control"%>
+  </div>
+
+  <div class="field">
+    <%= form.label :end_date %>
+    <%= form.date_field :end_date, class: "form-control"%>
+  </div>
+
+  <div class="field">
+    <%= form.label :Active %>
+    <%= form.check_box :active,placeholder: "Active" %>
+  </div>
+
+  <div class="actions text-center" style="padding-top: 12px">
+    <%= form.submit class:"btn btn-light btn-outline-dark"%>
+  </div>
+<% end %>
